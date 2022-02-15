@@ -1,0 +1,187 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Laravel Generator APIs",
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/v1/notebook/": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "Get all",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Post"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Post notebook",
+                "description": "Insert into database",
+                "parameters": [
+                    {
+                        "name": "notebook",
+                        "in": "path",
+                        "description": "Notebook",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "Notebook is not found"
+                    }
+                }
+            }
+        },
+        "/v1/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "Get notebook by id",
+                "description": "Get notebook by id",
+                "parameters": [
+                    {
+                        "name": "notebook_id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "Notebook is not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "NoteBook"
+                ],
+                "summary": "Update notebook",
+                "description": "Returns update notebook data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    },
+                    "404": {
+                        "description": "Notebook is not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "NoteBook"
+                ],
+                "summary": "Delete selecting notebook",
+                "description": "Delete a record and returns no content",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    },
+                    "404": {
+                        "description": "Notebook is not found"
+                    }
+                }
+            }
+        },
+        "/v1/paginate": {
+            "get": {
+                "tags": [
+                    "NoteBook"
+                ],
+                "summary": "Select by page",
+                "description": "Select by 1 data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    },
+                    "404": {
+                        "description": "Notebook is not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Post": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
